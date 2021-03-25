@@ -105,7 +105,15 @@ body {
     opacity: 1;
     right: 0;
   }
-
+  
+  .sort-asc, .sort-dsc {
+    margin-left: 20px;
+    background-color: var(--primary-color);
+  }
+  .active {
+    color: var(--secondary-color);
+    font-weight: bold;
+  }
 
   @media ( min-width: 650px) {
       .hot-tours {

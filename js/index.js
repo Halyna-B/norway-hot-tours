@@ -21,9 +21,11 @@ const hotToursJSON = `
 ]`;
 
 
-function renderTours(tours){
+function renderTours(tours, sortOder = "ascending"){
     const toursContainer = document.querySelector('.hot-tours');
-    for(const tour of tours)
+    const sortedTours = tours.slice().sort( (a, b) => sortOder === "ascending"? a.price - b.price : b.price - a.price);
+    toursContainer.innerHTML = " ";
+    for(const tour of sortedTours)
     toursContainer.innerHTML +=
    ` <article>
         <img src="img/${tour.imageURL}" alt="${tour.title}">
@@ -37,3 +39,21 @@ function renderTours(tours){
 }
 
 renderTours(JSON.parse(hotToursJSON));
+
+const sortToursAscendingButtons = document.querySelector('.sort-asc');
+const sortToursDescendingButton = document.querySelector('.sort-dsc');
+
+sortToursAscendingButtons.addEventListener('click', sortToursAscending);
+sortToursDescendingButton.addEventListener('click', sortToursDescending);
+
+function sortToursAscending() {
+    sortToursDescendingButton.classList.remove('active');
+    sortToursAscendingButtons.classList.add('active');
+renderTours(JSON.parse(hotToursJSON), "ascending");
+};
+
+function sortToursDescending() {
+    sortToursDescendingButton.classList.add('active');
+    sortToursAscendingButtons.classList.remove('active');
+renderTours(JSON.parse(hotToursJSON), "descending");
+};
