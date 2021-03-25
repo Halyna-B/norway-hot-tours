@@ -5,7 +5,7 @@
     --main-color: #fff;
     --primary-color: #f8afac8c;
     --secondary-color: #130a14;
-    --paragraph-color: #3a3938;
+    --btn-color: #fa683c;
     --third-color: #7addfc;
     --bg-color: #111010be;
     --main-font-family: 'Roboto', sans-serif; ;
@@ -58,15 +58,54 @@ body {
     padding: 20px;
 }
 
-  .lofoten-tour, .yacht-week, .mountain-tour {
-    background: rgba(130, 223, 247, 0.3);
-  }
+.hot-tours > article {
+  background: rgba(130, 223, 247, 0.3);
+}
   
   .button-container {
       display: flex;
       justify-content: space-around;
-      padding: 10px;
+      padding-bottom: 15px;
   }
+  
+  .info-btn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: var(--btn-color) ;
+    border: none;
+    color: var(--main-color);
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  
+  .info-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .info-btn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .info-btn:hover span {
+    padding-right: 25px;
+  }
+  
+  .info-btn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
 
   @media ( min-width: 650px) {
       .hot-tours {
