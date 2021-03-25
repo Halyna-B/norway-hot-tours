@@ -7,6 +7,7 @@
     --secondary-color: #130a14;
     --btn-color: #fa683c;
     --third-color: #7addfc;
+    --sorted-btn-color: #aad0e3;
     --bg-color: #111010be;
     --main-font-family: 'Roboto', sans-serif; ;
     --primary-font-family: 'Playfair Display', serif;
@@ -108,7 +109,7 @@ body {
   
   .sort-asc, .sort-dsc {
     margin-left: 20px;
-    background-color: var(--primary-color);
+    background-color: var(--sorted-btn-color);
   }
   .active {
     color: var(--secondary-color);
