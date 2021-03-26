@@ -116,6 +116,12 @@ body {
     font-weight: bold;
   }
 
+  .exchange-rate {
+    color: var(--main-color);
+    padding-left: 20px;
+  }
+
+
   @media ( min-width: 650px) {
       .hot-tours {
           grid-template-rows: none;

@@ -18,6 +18,7 @@ function renderTours(tours, sortOder = "ascending"){
 }
 
 
+
 async function fetchTours(order){
     const response = await fetch('hotTours.json');
     const tours = await response.json();
@@ -43,3 +44,4 @@ function sortToursDescending() {
     sortToursAscendingButtons.classList.remove('active');
     fetchTours("descending");
 };
+
