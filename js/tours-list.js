@@ -25,7 +25,7 @@ class ToursList {
             <p>${tour.description}</p>
                <div class="button-container">
                      <button class="info-btn"><span>Info</span></button>
-                     <button class="info-btn"><span>${tour.price*rate} NOK </span></button>
+                     <button class="info-btn"><span>${(tour.price*rate).toFixed(2)} NOK </span></button>
                </div>
        </article>`
     });
