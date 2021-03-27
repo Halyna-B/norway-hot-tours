@@ -1,47 +1,51 @@
-
-
-function renderTours(tours, sortOder = "ascending"){
-    const toursContainer = document.querySelector('.hot-tours');
-    const sortedTours = tours.slice().sort( (a, b) => sortOder === "ascending"? a.price - b.price : b.price - a.price);
-    toursContainer.innerHTML = " ";
-    for(const tour of sortedTours)
-    toursContainer.innerHTML +=
-   ` <article>
-        <img src="img/${tour.imageURL}" alt="${tour.title}">
-        <h2>${tour.title}</h2>
-        <p>${tour.description}</p>
-           <div class="button-container">
-                 <button class="info-btn"><span>Info</span></button>
-                 <button class="info-btn"><span>${tour.price} NOK </span></button>
-           </div>
-   </article>`
-}
+new ToursList();
 
 
 
-async function fetchTours(order){
-    const response = await fetch('hotTours.json');
-    const tours = await response.json();
-    renderTours(tours, order);
-}
+// function renderTours(tours, sortOder = "ascending"){
+//     const toursContainer = document.querySelector('.hot-tours');
+//     const sortedTours = tours.slice().sort( (a, b) => sortOder === "ascending"? a.price - b.price : b.price - a.price);
+//     toursContainer.innerHTML = " ";
+//     const currFrom = document.querySelector('.exchange-rate .curr-from').value;
+//     const rate = await this.currencyService.getCurrencyRate(currFrom);
+//     for(const tour of sortedTours)
+//     toursContainer.innerHTML +=
+//    ` <article>
+//         <img src="img/${tour.imageURL}" alt="${tour.title}">
+//         <h2>${tour.title}</h2>
+//         <p>${tour.description}</p>
+//            <div class="button-container">
+//                  <button class="info-btn"><span>Info</span></button>
+//                  <button class="info-btn"><span>${tour.price*rate} NOK </span></button>
+//            </div>
+//    </article>`
+// }
 
-fetchTours("ascending");
 
-const sortToursAscendingButtons = document.querySelector('.sort-asc');
-const sortToursDescendingButton = document.querySelector('.sort-dsc');
+// async function fetchTours(order){
+//     const response = await fetch('hotTours.json');
+//     const tours = await response.json();
+//     renderTours(tours, order);
+// }
 
-sortToursAscendingButtons.addEventListener('click', sortToursAscending);
-sortToursDescendingButton.addEventListener('click', sortToursDescending);
+// fetchTours("ascending");
 
-function sortToursAscending() {
-    sortToursDescendingButton.classList.remove('active');
-    sortToursAscendingButtons.classList.add('active');
-    fetchTours("ascending");
-};
+// const sortToursAscendingButtons = document.querySelector('.sort-asc');
+// const sortToursDescendingButton = document.querySelector('.sort-dsc');
 
-function sortToursDescending() {
-    sortToursDescendingButton.classList.add('active');
-    sortToursAscendingButtons.classList.remove('active');
-    fetchTours("descending");
-};
+// sortToursAscendingButtons.addEventListener('click', sortToursAscending);
+// sortToursDescendingButton.addEventListener('click', sortToursDescending);
+
+// function sortToursAscending() {
+//     sortToursDescendingButton.classList.remove('active');
+//     sortToursAscendingButtons.classList.add('active');
+//     fetchTours("ascending");
+// };
+
+// function sortToursDescending() {
+//     sortToursDescendingButton.classList.add('active');
+//     sortToursAscendingButtons.classList.remove('active');
+//     fetchTours("descending");
+// };
+
 
