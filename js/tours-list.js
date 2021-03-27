@@ -12,8 +12,13 @@ class ToursList {
     async renderTours() {
         let toursListDomString = '';
         const tours = await this.toursService.getTours();
-        let currTo = document.querySelector('.select-value').value;
-        const rate = await this.currencyService.getCurrencyRate(currTo);
+        document.querySelector('.convert').addEventListener('click', showOption);
+        function showOption() {
+          const option = document.querySelector('.select-value');
+          return option.value;
+        }
+
+        const rate = await this.currencyService.getCurrencyRate(showOption());
         [...tours]
           .sort( (a, b) => this.sortDirection === 'ascending' 
                              ? a.price - b.price
