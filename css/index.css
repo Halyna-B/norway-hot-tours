@@ -22,7 +22,7 @@ body {
     background: var(--bg-color);
 }
 
-#hot-tours h1 {
+#hot-tours h5 {
     font-size: 40px;
     font-family: var(--primary-font-family);
     color: var(--primary-color);

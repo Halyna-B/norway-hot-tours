@@ -56,6 +56,7 @@ class ToursList {
   }
 }
 
+
 // document.querySelector('.exchange-rate .show-rate').addEventListener('click', this.currencyService);
 // function sortToursAscending() {
     //     sortToursDescendingButton.classList.remove('active');
