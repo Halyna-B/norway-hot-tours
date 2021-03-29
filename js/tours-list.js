@@ -33,18 +33,30 @@ class ToursList {
                              : b.price - a.price)
           .forEach(tour => {
             toursListDomString +=  ` <article>
-            <img src="img/${tour.imageURL}" alt="${tour.title}">
-            <h2>${tour.title}</h2>
-            <p>${tour.description}</p>
+            <img class="card-img-top" src="img/${tour.imageURL}" alt="${tour.title}">
+            <h2 class="card-title">${tour.title}</h2>
+            <p class="card-text">${tour.description}</p>
                <div class="button-container">
-                     <button class="info-btn"><span>Info</span></button>
-                     <button class="info-btn"><span>${(tour.price*rate).toFixed(2)} ${changeCurrIcon()} </span></button>
+                     <button class="info-btn btn btn-info" data-bs-toggle="modal" data-bs-target="#productInfoModal" data-id='${tour.id}'><span class=" btn btn-info" data-bs-toggle="modal" data-bs-target="#productInfoModal" data-id='${tour.id}'>Info</span></button>
+                     <button class="info-btn buy"><span>${(tour.price*rate).toFixed(2)} ${changeCurrIcon()} </span></button>
                </div>
        </article>`
     });
+
+
     this.container.innerHTML = toursListDomString;
   }
      async addEventListeners() {
+
+      document
+      .querySelectorAll('.button-container .btn-info')
+      .forEach(button =>
+        button.addEventListener('click', event =>
+          this.handleProductInfoClick(event)
+        )
+      );
+
+
         document
           .querySelector('#show-option').addEventListener('click', async () => {
           this.option.value ;
@@ -64,32 +76,23 @@ class ToursList {
         await this.renderTours();
         this.addEventListeners();
     });
-    
+
+  }
+  async handleProductInfoClick(event) {
+    const button = event.target; // Button that triggered the modal
+    const id = button.dataset.id; // Extract info from data-* attributes
+    const tour = await this.toursService.getToursById(id);
+    const modal = document.querySelector('#productInfoModal');
+    const tourImg = modal.querySelector('.card-img-top');
+    tourImg.setAttribute('src','img/' + tour.imageURL);
+    tourImg.setAttribute('alt', tour.title);
+    modal.querySelector('.modal-body .card-title').innerText = tour.title;
+    modal.querySelector('.modal-body .card-text').innerText =
+      tour.description;
+    const btnBuy = modal.querySelector('.buy');
+    btnBuy.innerText = tour.price;
+    btnBuy.dataset.id = id;
   }
 }
 
 
-// function changeCurrIcon () {
-//   if(this.option.value === "NOK"){
-//     return "NKr";
-//   }else if(this.option.value === "UAH"){
-//     return "₴";
-//   }else if(this.option.value === "USD"){
-//     return "$";
-//   }else if(this.option.value === "EUR"){
-//     return "€";
-//   }
-// }
-
-// document.querySelector('.exchange-rate .show-rate').addEventListener('click', this.currencyService);
-// function sortToursAscending() {
-    //     sortToursDescendingButton.classList.remove('active');
-    //     sortToursAscendingButtons.classList.add('active');
-    //     fetchTours("ascending");
-    // };
-    
-    // function sortToursDescending() {
-    //     sortToursDescendingButton.classList.add('active');
-    //     sortToursAscendingButtons.classList.remove('active');
-    //     fetchTours("descending");
-    // };

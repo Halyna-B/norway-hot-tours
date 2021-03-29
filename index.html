@@ -29,7 +29,28 @@
                    
             </section>
         </main>
-        
+         <!-- Modal Product Info -->
+    <div class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-labelledby="productInfoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="productInfoLabel">Tour Info</h2>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <img class="card-img-top" src="" alt="">
+                <h2 class="card-title"></h2>
+                <p class="card-text"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary buy" data-id="id">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
         <script src="js/tours-service.js"></script>
         <script src="js/currency-converter.js"></script>
         <script src="js/tours-list.js"></script>
