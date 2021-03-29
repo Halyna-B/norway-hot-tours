@@ -14,7 +14,19 @@ class ToursList {
     async renderTours() {
         let toursListDomString = '';
         const tours = await this.toursService.getTours();
-        const rate = await this.currencyService.getCurrencyRate(this.option.value);
+        const currTo = this.option.value;
+        const rate = await this.currencyService.getCurrencyRate(currTo);
+        function changeCurrIcon () {
+          if(currTo === "NOK"){
+            return "NKr";
+          }else if(currTo === "UAH"){
+            return "₴";
+          }else if(currTo === "USD"){
+            return "$";
+          }else if(currTo === "EUR"){
+            return "€";
+          }
+        }
         [...tours]
           .sort( (a, b) => this.sortDirection === 'ascending' 
                              ? a.price - b.price
@@ -26,7 +38,7 @@ class ToursList {
             <p>${tour.description}</p>
                <div class="button-container">
                      <button class="info-btn"><span>Info</span></button>
-                     <button class="info-btn"><span>${(tour.price*rate).toFixed(2)} </span></button>
+                     <button class="info-btn"><span>${(tour.price*rate).toFixed(2)} ${changeCurrIcon()} </span></button>
                </div>
        </article>`
     });
@@ -56,6 +68,18 @@ class ToursList {
   }
 }
 
+
+// function changeCurrIcon () {
+//   if(this.option.value === "NOK"){
+//     return "NKr";
+//   }else if(this.option.value === "UAH"){
+//     return "₴";
+//   }else if(this.option.value === "USD"){
+//     return "$";
+//   }else if(this.option.value === "EUR"){
+//     return "€";
+//   }
+// }
 
 // document.querySelector('.exchange-rate .show-rate').addEventListener('click', this.currencyService);
 // function sortToursAscending() {
